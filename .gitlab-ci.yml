@@ -13,7 +13,7 @@ stages:
     stage: build
     script:
         - cd $PATH_TO_APP
-        - mvn clean package -U
+        - mvn clean package
     artifacts:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
@@ -27,7 +27,17 @@ build_identity:
     only:
         changes:
             - identity/**/*
-        
+
+another:
+    stage: build
+    script:
+        - cd identity/identity-starter && sudo mvn clean install
+
+another1:
+    stage: build
+    script:
+        - cd messaging && sudo mvn clean package
+
 build_messaging:
     <<: *build_template
     variables:
