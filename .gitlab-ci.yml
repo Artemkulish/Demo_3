@@ -83,4 +83,5 @@ deploy_identity:
     only:
         changes:
             - identity/**/*
-
+    dependencies:
+        - build_identity
