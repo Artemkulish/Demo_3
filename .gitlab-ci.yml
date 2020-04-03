@@ -19,14 +19,6 @@ stages:
         - $PATH_TO_APP$PATH_TO_JAR
         expire_in: 1 day
    
-  
-build_identity_1:
-    <<: *build_template
-    variables:
-        PATH_TO_APP: identity/identity-service
-    only:
-        changes:
-            - identity/**/*
 
 build_identity_2:
     stage: build
@@ -35,6 +27,14 @@ build_identity_2:
     artifacts:
         paths:
             - identity/identity-starter/target
+    only:
+        changes:
+            - identity/**/*
+
+build_identity_1:
+    <<: *build_template
+    variables:
+        PATH_TO_APP: identity/identity-service
     only:
         changes:
             - identity/**/*
