@@ -23,7 +23,17 @@ stages:
 build_identity:
     <<: *build_template
     variables:
-        PATH_TO_APP: identity
+        PATH_TO_APP: identity/identity-service
+    only:
+        changes:
+            - identity/**/*
+
+build_identity:
+    stage: build
+    script:
+        - cd identity/identity-starter && sudo mvn clean install
+    variables:
+        PATH_TO_APP: identity/identity-starter
     only:
         changes:
             - identity/**/*
