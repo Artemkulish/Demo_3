@@ -13,7 +13,7 @@ stages:
     stage: build
     script:
         - cd $PATH_TO_APP
-        - mvn clean package
+        - mvn clean package -U
     artifacts:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
