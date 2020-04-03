@@ -20,7 +20,7 @@ stages:
         expire_in: 1 day
    
   
-build_identity:
+build_identity_1:
     <<: *build_template
     variables:
         PATH_TO_APP: identity/identity-service
@@ -28,7 +28,7 @@ build_identity:
         changes:
             - identity/**/*
 
-build_identity:
+build_identity_2:
     stage: build
     script:
         - cd identity/identity-starter && sudo mvn clean install
