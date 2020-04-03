@@ -23,7 +23,7 @@ stages:
 build_identity:
     <<: *build_template
     variables:
-        PATH_TO_APP: identity
+        PATH_TO_APP: identity/identity-service
     only:
         changes:
             - identity/**/*
