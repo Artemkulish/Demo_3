@@ -78,3 +78,19 @@ build_vehicle:
     only:
         changes:
             - vehicle/**/*
+
+
+.deploy_template: &deploy_template
+    stage: deploy
+    script:
+      - scp deploy.sh $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp
+      - ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/deploy.sh /var/ && sudo bash /var/deploy.sh "
+       
+deploy_billing:
+    <<: *deploy_template
+    variables:
+        PATH_TO_APP: BE/BillingService 
+        IP: $IP_BILLING 
+    only:
+        changes:
+            - BE/BillingService/**/*
