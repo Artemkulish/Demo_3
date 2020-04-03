@@ -20,17 +20,6 @@ stages:
         expire_in: 1 day
    
 
-#build_identity_1:
-#    stage: build
-#    script:
-#        - cd identity/identity-starter && mvn clean install
-#    artifacts:
-#        paths:
-#            - identity/identity-starter/target
-#    only:
-#        changes:
-#            - identity/**/*
-
 build_identity:
     <<: *build_template
     variables:
@@ -83,14 +72,14 @@ build_vehicle:
 .deploy_template: &deploy_template
     stage: deploy
     script:
-      - scp deploy.sh $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp
-      - ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/deploy.sh /var/ && sudo bash /var/deploy.sh "
+      - scp deploy.sh $PATH_TO_APP$PATH_TO_JAR -r /home/env $USERNAME@$IP:/tmp
+      - ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/deploy.sh /var/ && sudo mv /tmp/env /var/ "
        
-deploy_billing:
+deploy_identity:
     <<: *deploy_template
     variables:
-        PATH_TO_APP: BE/BillingService 
-        IP: $IP_BILLING 
+        PATH_TO_APP: identity
     only:
         changes:
-            - BE/BillingService/**/*
+            - identity/**/*
+
