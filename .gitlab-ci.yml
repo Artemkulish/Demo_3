@@ -1,6 +1,6 @@
 variables:
     PATH_TO_JAR:    /target/*.jar
-    IP:             10.128.0.13
+    #IP:             10.128.0.13
     #IP: $ENV-VARIEBLE
     
 stages:
@@ -72,9 +72,9 @@ build_vehicle:
 .deploy_template: &deploy_template
     stage: deploy
     script:
-      #- scp docker-compose.yml $PATH_TO_APP$PATH_TO_JAR -r /home/env $USERNAME@$IP:/tmp
-      - scp docker-compose.yml artemkulish123@$IP:/tmp
-      #- ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/deploy.sh /var/ && sudo mv /tmp/env /var/ "
+      - scp docker-compose.yml $PATH_TO_APP$PATH_TO_JAR -r /home/env $USERNAME@$IP:/tmp
+      #- scp docker-compose.yml artemkulish123@$IP:/tmp
+      #- ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/env /var/ "
        
 deploy_identity:
     <<: *deploy_template
