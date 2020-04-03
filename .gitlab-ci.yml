@@ -32,6 +32,9 @@ another:
     stage: build
     script:
         - cd identity/identity-starter && sudo mvn clean install
+    artifacts:
+        paths:
+        - identity/identity-starter/target
 
 another1:
     stage: build
