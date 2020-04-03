@@ -32,8 +32,9 @@ build_identity_2:
     stage: build
     script:
         - cd identity/identity-starter && sudo mvn clean install
-    variables:
-        PATH_TO_APP: identity/identity-starter
+    artifacts:
+        paths:
+            - identity/identity-starter/target
     only:
         changes:
             - identity/**/*
