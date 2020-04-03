@@ -28,11 +28,6 @@ build_identity:
         changes:
             - identity/**/*
 
-another1:
-    stage: build
-    script:
-        - cd messaging && sudo mvn clean package
-
 build_messaging:
     <<: *build_template
     variables:
@@ -72,4 +67,3 @@ build_vehicle:
     only:
         changes:
             - vehicle/**/*
-
