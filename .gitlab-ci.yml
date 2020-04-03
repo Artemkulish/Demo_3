@@ -74,7 +74,7 @@ build_vehicle:
     script:
       #- scp docker-compose.yml $PATH_TO_APP$PATH_TO_JAR -r /home/env $USERNAME@$IP:/tmp
       - ls
-      - scp docker-compose.yml $USERNAME@$IP:/tmp
+      - scp $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp
       #- ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/env /var/ "
        
 deploy_identity:
