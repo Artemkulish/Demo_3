@@ -27,7 +27,7 @@ build_identity:
     only:
         changes:
             - identity/**/*
-        
+
 build_messaging:
     <<: *build_template
     variables:
