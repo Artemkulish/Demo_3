@@ -88,8 +88,8 @@ deploy_identity:
     only:
         changes:
             - identity/**/*
-    dependencies:
-        - build_identity
+    #dependencies:
+    #    - build_identity
 
 deploy_messaging:
     <<: *deploy_template
@@ -113,9 +113,7 @@ deploy_simulation:
         PATH_TO_APP: simulation
     only:
         changes:
-            - simulation
-    dependencies:
-        - build_simulation       
+            - simulation   
         
 deploy_trip:
     <<: *deploy_template
@@ -123,9 +121,7 @@ deploy_trip:
         PATH_TO_APP: trip
     only:
         changes:
-            - trip
-    dependencies:
-        - build_trip        
+            - trip   
         
 deploy_vehicle:
     <<: *deploy_template
@@ -134,7 +130,5 @@ deploy_vehicle:
     only:
         changes:
             - vehicle
-    dependencies:
-        - build_vehicle
                 
                 
