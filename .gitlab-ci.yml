@@ -72,7 +72,7 @@ build_vehicle:
 .deploy_template: &deploy_template
     stage: deploy
     script:
-      - sudo mkdir scooter
+      - mkdir scooter
       - find . -name 'Dockerfile' -exec cp --parents \{\} scooter \;
       - scp -r scooter $USERNAME@$IP:/tmp
       #- scp -r /home/env docker-compose.yml $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp
