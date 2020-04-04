@@ -75,16 +75,16 @@ build_vehicle:
       - mkdir scooter
       - find . -name 'Dockerfile' -exec cp --parents \{\} scooter \;
       - scp -r scooter $USERNAME@$IP:/tmp
-      - scp docker-compose.yml $USERNAME@$IP:/tmp/scooter
-      #- scp -r /home/env docker-compose.yml $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp
+      - scp -r /home/env docker-compose.yml $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp/scooter
+      - ssh $USERNAME@$IP "sudo mv /tmp/scooter /var/"
       #- ssh $USERNAME@$IP "sudo mv /tmp/*.jar /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/env /var/"
  
 deploy_identity:
     <<: *deploy_template
-    #variables:
-    #    PATH_TO_APP: identity/identity-service
-    #only:
-    #    changes:
-    #        - identity/**/*
-    #dependencies:
-    #    - build_identity
+    variables:
+        PATH_TO_APP: identity/identity-service
+    only:
+        changes:
+            - identity/**/*
+    dependencies:
+        - build_identity
