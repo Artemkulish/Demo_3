@@ -97,7 +97,7 @@ deploy_messaging:
         PATH_TO_APP: messaging
     only:
         changes:
-            - messaging
+            - messaging/**/*
         
 deploy_payment:
     <<: *deploy_template
@@ -105,7 +105,7 @@ deploy_payment:
         PATH_TO_APP: payment
     only:
         changes:
-            - payment  
+            - payment/**/*
         
 deploy_simulation:
     <<: *deploy_template
@@ -113,7 +113,7 @@ deploy_simulation:
         PATH_TO_APP: simulation
     only:
         changes:
-            - simulation   
+            - simulation/**/*
         
 deploy_trip:
     <<: *deploy_template
@@ -121,7 +121,7 @@ deploy_trip:
         PATH_TO_APP: trip
     only:
         changes:
-            - trip   
+            - trip/**/*
         
 deploy_vehicle:
     <<: *deploy_template
@@ -129,6 +129,6 @@ deploy_vehicle:
         PATH_TO_APP: vehicle
     only:
         changes:
-            - vehicle
+            - vehicle/**/*
                 
                 
