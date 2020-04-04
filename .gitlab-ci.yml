@@ -14,6 +14,8 @@ stages:
     script:
         - cd $PATH_TO_APP
         - mvn clean package
+        - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
+        - sudo docker push gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP
     artifacts:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
