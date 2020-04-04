@@ -105,9 +105,7 @@ deploy_payment:
         PATH_TO_APP: payment
     only:
         changes:
-            - payment
-    dependencies:
-        - build_payment      
+            - payment  
         
 deploy_simulation:
     <<: *deploy_template
