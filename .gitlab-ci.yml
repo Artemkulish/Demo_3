@@ -81,7 +81,7 @@ build_identity:
     stage: deploy
     script:
       - scp -r /home/env docker-compose.yml deploy.sh $PATH_TO_APP$PATH_TO_JAR $USERNAME@$IP:/tmp
-      - ssh $USERNAME@$IP "sudo mv /tmp/*.jar /opt/ && sudo mv /tmp/docker-compose.yml /opt/ && sudo mv /tmp/deploy.sh /opt/"
+      - ssh $USERNAME@$IP "sudo mv /tmp/*.jar /home/ && sudo mv /tmp/docker-compose.yml /home/ && sudo mv /tmp/deploy.sh /home/"
       - ssh $USERNAME@$IP "sudo bash /opt/deploy.sh"
       
 deploy_identity:
