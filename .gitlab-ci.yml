@@ -19,26 +19,15 @@ stages:
     artifacts:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
-        expire_in: 1 day
-    only:
-        changes:
-            - $PATH_TO_APP/**/*   
-
-build_identity:
-    <<: *build_template
-    variables:
-        PATH_TO_APP: identity/identity-service
-    only:
-        changes:
-            - identity/**/*
+        expire_in: 1 day 
 
 build_messaging:
     <<: *build_template
     variables:
         PATH_TO_APP: messaging
-#    only:
-#        changes:
-#            - messaging/**/*
+    only:
+        changes:
+            - messaging/**/*
         
 build_payment:
     <<: *build_template
@@ -72,6 +61,21 @@ build_vehicle:
         changes:
             - vehicle/**/*
 
+build_identity:
+    stage: build
+    script:
+        - cd identity/identity-starter && mvn clean install
+        - cd ../identity-service && mvn clean package
+        - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:identity .
+        - sudo docker push gitlab.svagworks.me:5050/root/demo_3:identity
+    artifacts:
+        paths:
+        - identity/identity-starter$PATH_TO_JAR
+        - identity/identity-service$PATH_TO_JAR
+        expire_in: 1 day 
+    only:
+        changes:
+            - identity/**/*
 
 .deploy_template: &deploy_template
     stage: deploy
