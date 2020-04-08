@@ -45,7 +45,7 @@ services:
       - ./env/messaging.env  
       
   identity:
-    image: gitlab.svagworks.me:5050/root/demo_3:identity/identity-service
+    image: gitlab.svagworks.me:5050/root/demo_3:identity
 #    depends_on:
 #      - db
     ports:
@@ -83,7 +83,7 @@ services:
       - ./env/vehicle.env
 
   simulator:
-    image: gitlab.svagworks.me:5050/root/demo_3:simulator
+    image: gitlab.svagworks.me:5050/root/demo_3:simulation
     depends_on:
       - kafka
       - vehicle
