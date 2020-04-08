@@ -20,7 +20,9 @@ stages:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
         expire_in: 1 day
-   
+    only:
+        changes:
+            - $PATH_TO_APP/**/*   
 
 build_identity:
     <<: *build_template
@@ -34,9 +36,9 @@ build_messaging:
     <<: *build_template
     variables:
         PATH_TO_APP: messaging
-    only:
-        changes:
-            - messaging/**/*
+#    only:
+#        changes:
+#            - messaging/**/*
         
 build_payment:
     <<: *build_template
