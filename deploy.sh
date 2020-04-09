@@ -5,7 +5,7 @@ docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "$PWD:$PWD" \
     -w="$PWD" \
-    docker/compose:1.24.0 $1 $2 $3
+    docker/compose:1.24.0 $1 $2 $3 $4
 }
 
 services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" "simulation")
@@ -16,6 +16,6 @@ if docker ps | grep -q $container; then
 echo "$container is UP";
 else
 echo "Starting $container"
-docker-compose up -d $container &>/dev/null &
+docker-compose up --no-deps -d $container &>/dev/null &
 fi
 done
