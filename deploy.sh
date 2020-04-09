@@ -14,7 +14,6 @@ for container in ${services[*]}
 do 
 if docker ps | grep -q $container; then
 echo "$container is UP";
-sleep 5
 else
 docker-compose up -d $container &>/dev/null &
 fi
