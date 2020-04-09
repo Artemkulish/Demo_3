@@ -17,27 +17,10 @@ services:
       - 9092:9092    
     env_file:
       - ./env/kafka.env
-                                
-#  db:
-#    image: postgres:12
-#    restart: always
-#    volumes:
-#      - ./init-databases.sql:/docker-entrypoint-initdb.d/init.sql
-#    ports:
-#      - 8091:5432
-#    env_file:
-#      - ./env/db.env  
 
-#  adminer:
-#    image: adminer
-#    restart: always  
-#    ports:
-#      - 8090:8080
-      
   messaging:
     image: gitlab.svagworks.me:5050/root/demo_3:messaging
     depends_on:
-#      - db
       - kafka
     ports:
       - 8084:8080
@@ -46,8 +29,6 @@ services:
       
   identity:
     image: gitlab.svagworks.me:5050/root/demo_3:identity
-#    depends_on:
-#      - db
     ports:
       - 8080:8080
     env_file:
@@ -55,8 +36,6 @@ services:
       
   payment:
     image: gitlab.svagworks.me:5050/root/demo_3:payment
-#    depends_on:
-#      - db
     ports:
       - 8083:8080
     env_file:
@@ -65,7 +44,6 @@ services:
   trip:
     image: gitlab.svagworks.me:5050/root/demo_3:trip
     depends_on:
-#      - db
       - kafka
     ports:
       - 8082:8080
@@ -75,14 +53,13 @@ services:
   vehicle:
     image: gitlab.svagworks.me:5050/root/demo_3:vehicle
     depends_on:
-#      - db
       - kafka
     ports:
       - 8081:8080
     env_file:
       - ./env/vehicle.env
 
-  simulator:
+  simulation:
     image: gitlab.svagworks.me:5050/root/demo_3:simulation
     depends_on:
       - kafka
