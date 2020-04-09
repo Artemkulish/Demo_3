@@ -15,6 +15,7 @@ do
 if docker ps | grep -q $container; then
 echo "$container is UP";
 else
+echo "Starting $container"
 docker-compose up -d $container &>/dev/null &
 fi
 done
