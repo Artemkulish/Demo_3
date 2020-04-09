@@ -19,7 +19,7 @@ stages:
     artifacts:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
-        expire_in: 60
+        expire_in: 5 min
 
 build_messaging:
     <<: *build_template
@@ -133,5 +133,3 @@ deploy_vehicle:
     only:
         changes:
             - vehicle/**/*
-                
-                
