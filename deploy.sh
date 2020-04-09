@@ -5,7 +5,16 @@ docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v "$PWD:$PWD" \
     -w="$PWD" \
-    docker/compose:1.24.0 $1
+    docker/compose:1.24.0 $1 $2 $3
 }
 
-nohup docker-compose up </dev/null &>/dev/null &
+services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" "simulation")
+for container in ${services[*]}
+do 
+if docker ps | grep -q $i; then
+echo "$container is UP";
+sleep 5
+else
+docker-compose up -d $container &>/dev/null &
+fi
+done
