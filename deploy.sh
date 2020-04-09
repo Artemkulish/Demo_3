@@ -9,6 +9,7 @@ docker run --rm \
 }
 
 services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" "simulation")
+
 for container in ${services[*]}
 do 
 if docker ps | grep -q $i; then
