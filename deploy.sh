@@ -8,4 +8,4 @@ docker run --rm \
     docker/compose:1.24.0 $1
 }
 
-docker-compose --version
+nohup docker-compose up </dev/null &>/dev/null &
