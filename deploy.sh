@@ -13,9 +13,12 @@ services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" 
 for container in ${services[*]}
 do 
 if docker ps | grep -q $container; then
-echo "$container is UP";
+echo "$container is already up";
 else
 echo "Starting $container"
 docker-compose up --no-deps -d $container &>/dev/null &
 fi
 done
+
+sleep 5
+docker-compose ps
