@@ -81,53 +81,40 @@ build_identity:
     stage: deploy
     script:
       - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$IP_TEST:/var
-      #- ssh $USERNAME@$IP_TEST "sudo mv /tmp/env /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
       - ssh $USERNAME@$IP_TEST "cd /var/ && sudo bash /var/deploy.sh"
       
 deploy_identity:
     <<: *deploy_template
-    variables:
-        PATH_TO_APP: identity/identity-service
-    #only:
-    #    changes:
-    #        - identity/**/*
+    only:
+        changes:
+            - identity/**/*
 
 deploy_messaging:
     <<: *deploy_template
-    variables:
-        PATH_TO_APP: messaging
     only:
         changes:
             - messaging/**/*
         
 deploy_payment:
     <<: *deploy_template
-    variables:
-        PATH_TO_APP: payment
     only:
         changes:
             - payment/**/*
         
 deploy_simulation:
     <<: *deploy_template
-    variables:
-        PATH_TO_APP: simulation
     only:
         changes:
             - simulation/**/*
         
 deploy_trip:
     <<: *deploy_template
-    variables:
-        PATH_TO_APP: trip
     only:
         changes:
             - trip/**/*
         
 deploy_vehicle:
     <<: *deploy_template
-    variables:
-        PATH_TO_APP: vehicle
     only:
         changes:
             - vehicle/**/*
