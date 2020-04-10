@@ -82,7 +82,7 @@ build_identity:
     script:
       - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$IP_TEST:/tmp
       - ssh $USERNAME@$IP_TEST "sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
-      - ssh $USERNAME@$IP_TEST "sudo bash /var/deploy.sh"
+      - ssh $USERNAME@$IP_TEST "cd /var/ && sudo bash /var/deploy.sh"
       
 deploy_identity:
     <<: *deploy_template
