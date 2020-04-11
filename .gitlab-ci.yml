@@ -80,9 +80,8 @@ build_identity:
 .deploy_template: &deploy_template
     stage: deploy
     script:
-      - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$IP_TEST:/var
+      - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$IP_TEST:/tmp
       - ssh $USERNAME@$IP_TEST "sudo mv /tmp/env /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
-      #- ssh $USERNAME@$IP_TEST "docker pull gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP"
       - ssh $USERNAME@$IP_TEST "cd /var/ && sudo bash /var/deploy.sh"
       
 deploy_identity:
