@@ -15,13 +15,13 @@ do
 if docker images | awk '{print $2}' | awk 'NR==2' | grep $container &>/dev/null; then
 echo "Updating app"
 docker-compose up --no-deps -d $container &>/dev/null &
+fi
 if docker ps | grep -q $container; then
 echo "Running $container";
 else
 echo "Starting $container"
 docker pull gitlab.svagworks.me:5050/root/demo_3:$container
 docker-compose up --no-deps -d $container &>/dev/null &
-fi
 fi
 done
 
