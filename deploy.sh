@@ -12,13 +12,14 @@ services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" 
 
 for container in ${services[*]}
 do 
-if ls -Art | tail -n 1 | grep $container &>/dev/null; then
-echo "Updating app"
-docker-compose up --no-deps -d $container &>/dev/null &
-elif docker ps | grep -q $container; then
+#if ls -Art | tail -n 1 | grep $container &>/dev/null; then
+#echo "Updating app"
+#docker-compose up --no-deps -d $container &>/dev/null &
+if docker ps | grep -q $container; then
 echo "Running $container";
 else
 echo "Starting $container"
+docker pull gitlab.svagworks.me:5050/root/demo_3:$container
 docker-compose up --no-deps -d $container &>/dev/null &
 fi
 done
