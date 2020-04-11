@@ -22,6 +22,7 @@ echo "Starting $container"
 docker pull gitlab.svagworks.me:5050/root/demo_3:$container
 docker-compose up --no-deps -d $container &>/dev/null &
 fi
+fi
 done
 
 echo "Deleting unused images"
