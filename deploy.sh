@@ -23,7 +23,9 @@ docker-compose up --no-deps -d $container &>/dev/null &
 fi
 done
 
-docker image prune -a
+echo "Deleting unused images"
+docker image prune -a -f
 
-sleep 4
+echo "Checking active containers, please hold on..."
+sleep 20
 docker-compose ps
