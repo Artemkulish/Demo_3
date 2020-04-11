@@ -23,5 +23,7 @@ docker-compose up --no-deps -d $container &>/dev/null &
 fi
 done
 
+docker image prune -a
+
 sleep 4
 docker-compose ps
