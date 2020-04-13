@@ -12,7 +12,7 @@ services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" 
 
 for container in ${services[*]}
 do 
-docker pull gitlab.svagworks.me:5050/root/demo_3:$container
+docker pull gitlab.svagworks.me:5050/root/demo_3:$container &>/dev/null
 if docker images | awk '{print $2}' | awk 'NR==2' | grep $container &>/dev/null; then
 echo "Updating app"
 docker-compose up --no-deps -d $container &>/dev/null &
