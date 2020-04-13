@@ -119,3 +119,26 @@ deploy_vehicle:
     only:
         changes:
             - vehicle/**/*
+
+
+.database_template: &database_template
+    stage: update
+    script:
+        - mvn liquibase:$FUNCTION
+    when: manual
+    
+database_update:
+    <<: *database_template
+    variables:
+        FUNCTION: update
+    only:
+        changes:
+            - dbchangelog.xml  
+    
+database_rollback:
+    <<: *database_template
+    variables:
+        FUNCTION: rollback -Dliquibase.rollbackCount=1
+    only:
+        changes:
+            - dbchangelog.xml  
