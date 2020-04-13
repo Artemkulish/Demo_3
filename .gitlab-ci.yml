@@ -19,7 +19,7 @@ stages:
     artifacts:
         paths:
         - $PATH_TO_APP$PATH_TO_JAR
-        expire_in: 5 min
+        expire_in: 15 min
 
 build_messaging:
     <<: *build_template
