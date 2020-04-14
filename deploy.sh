@@ -26,7 +26,7 @@ done
 
 echo ""
 echo "Checking active containers, please hold on..."
-sleep 2
+sleep 15
 docker-compose ps
 echo ""
 echo "Deleting unused images" 
