@@ -35,4 +35,5 @@ identity-url: ${IDENTITY_URL}
 
 logging:
   file:
-    path: /var/logs
+    path: /var/log/messaging
+
