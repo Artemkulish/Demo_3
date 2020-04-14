@@ -23,3 +23,7 @@ spring:
       properties:
         spring.json.type.mapping: >
           validation: com.softserve.identityservice.model.EmailVerificationDto
+
+logging:
+  file:
+    path: /var/log/messaging
