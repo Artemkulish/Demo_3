@@ -6,9 +6,6 @@
 - CI/CD: the **.gitlab-ci.yml** script for GitLab;
 - Deploy: **deploy.sh** and **docker-compose.yml**.
 
-# Infrastructure
-![1](https://user-images.githubusercontent.com/57228865/79222403-20c59000-7e60-11ea-838c-e148d5fbe1be.jpg)
-
 # Requirements
 - Minimization of external IP addresses;
 - External monitoring of all services in a particular region;
@@ -16,6 +13,8 @@
 - Logs aggregation to be able to create statistics via various metrics;
 - The least possible downtime during the updates.
 
+# Infrastructure
+![1](https://user-images.githubusercontent.com/57228865/79222403-20c59000-7e60-11ea-838c-e148d5fbe1be.jpg)
 
 # Google Cloud Platform
 - Reserve two static IP addresses for GitLab and Load Balancer: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address
