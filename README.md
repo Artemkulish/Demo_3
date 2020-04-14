@@ -13,7 +13,7 @@
 - Minimization of external IP addresses;
 - External monitoring of all services in a particular region;
 - Alerting in case of emergency;
-- Logs aggregation and statistics via various metrics.
+- Logs aggregation to be able to create statistics via various metrics.
 
 
 # Google Cloud Platform
