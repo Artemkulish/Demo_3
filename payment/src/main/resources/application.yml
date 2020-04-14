@@ -17,3 +17,7 @@ spring:
 stripe:
   public-key: ${STRIPE_PUBLIC_KEY}
   private-key: ${STRIPE_SECRET_KEY}
+
+logging:
+  file:
+    path: /var/log/payment
