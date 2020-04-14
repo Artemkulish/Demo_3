@@ -18,7 +18,7 @@
 
 
 
-GitLab configuration:
+**GitLab configuration:**
 - Create instance with at least 8GB RAM (16GB is preferable)
 - Install GitLab: https://about.gitlab.com/install/
 - Install GitLab Runner: https://docs.gitlab.com/runner/install/linux-manually.html
