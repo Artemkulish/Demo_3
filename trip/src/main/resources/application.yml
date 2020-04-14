@@ -21,3 +21,7 @@ spring:
 
 payment-url: ${PAYMENT_URL}
 vehicle-url: ${VEHICLE_URL}
+
+logging:
+  file:
+    path: /var/log/trip
