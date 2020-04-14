@@ -14,7 +14,7 @@ for container in ${services[*]}
 do 
 docker pull gitlab.svagworks.me:5050/root/demo_3:$container &>/dev/null
 if docker images | awk '{print $2}' | awk 'NR==2' | grep $container &>/dev/null; then
-echo "Updating app"
+echo "Updating $container"
 docker-compose up --no-deps -d $container &>/dev/null &
 elif docker ps | grep -q $container; then
 echo "Running $container";
@@ -24,9 +24,10 @@ docker-compose up --no-deps -d $container &>/dev/null &
 fi
 done
 
-echo "Deleting unused images"
-docker image prune -a -f
-
+echo ""
 echo "Checking active containers, please hold on..."
-sleep 20
+sleep 2
 docker-compose ps
+echo ""
+echo "Deleting unused images" 
+docker image prune -a -f | grep Total
