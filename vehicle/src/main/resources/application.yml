@@ -21,3 +21,7 @@ spring:
                     raw:com.softserve.kickscooter.kickscootervehicle.management.dto.ScooterRawDataDto
     liquibase:
         change-log: classpath:/db/changelog/db.changelog-master.xml
+
+logging:
+  file:
+    path: /var/log/vehicle
