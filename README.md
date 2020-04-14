@@ -1,4 +1,4 @@
-# Deploy of Java application to the Docker environment
+# Deploy of multi-service Java application
 
 GitLab configuration:
 - Create instance with at least 8GB RAM (16GB is preferable)
