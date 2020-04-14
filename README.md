@@ -14,7 +14,7 @@
 - External monitoring of all services in a particular region;
 - Alerting in case of emergency;
 - Logs aggregation to be able to create statistics via various metrics;
-- The least possible downtime during update.
+- The least possible downtime during the updates.
 
 
 # Google Cloud Platform
