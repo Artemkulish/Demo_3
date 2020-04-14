@@ -15,6 +15,9 @@
 - Create Load Balancer: https://github.com/Artemkulish/Ansible/blob/master/demo3/loadbalancer.yml
 - Create CloudSQL: https://github.com/Artemkulish/Ansible/blob/master/demo3/cloudsql.yml
 
+
+
+
 GitLab configuration:
 - Create instance with at least 8GB RAM (16GB is preferable)
 - Install GitLab: https://about.gitlab.com/install/
