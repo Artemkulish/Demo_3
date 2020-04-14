@@ -2,7 +2,7 @@
 
 # Components
 - Applications: **identity**, **messaging**, **payment**, **simulation**, **trip**, **vehicle**;
-- DB update: the **change logs** and **property file**;
+- DB update: **change logs** and the **property file**;
 - CI/CD: the **.gitlab-ci.yml** script for GitLab;
 - Deploy: **deploy.sh** and **docker-compose.yml**.
 
