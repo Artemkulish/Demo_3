@@ -1,9 +1,9 @@
 # Deploy of multi-service Java application
 
 # Components
-- Applications: identity, messaging, payment, simulation, trip, vehicle
-- Database update: the "database-update" folder with the change logs and property files
-- CI/CD: the **.gitlab-ci.yml** script for GitLab
+- Applications: identity, messaging, payment, simulation, trip, vehicle;
+- DB update: the **database-update** folder with the change logs and property files;
+- CI/CD: the **.gitlab-ci.yml** script for GitLab;
 - Deploy: **deploy.sh** and **docker-compose.yml**.
 
 # Infrastructure
