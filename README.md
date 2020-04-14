@@ -9,3 +9,4 @@ GitLab configuration:
 - Add necessary environment variables https://docs.gitlab.com/ee/ci/variables/README.html#via-the-ui
 - Install Java: https://java.com/en/download/help/download_options.xml
 - Install Maven: https://maven.apache.org/install.html
+- Install Liquibase: https://www.liquibase.org/get_started/lb-setup-tutorial.html
