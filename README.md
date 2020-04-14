@@ -1,5 +1,8 @@
 # Deploy of multi-service Java application
 
+# Infrastructure
+![1](https://user-images.githubusercontent.com/57228865/79222403-20c59000-7e60-11ea-838c-e148d5fbe1be.jpg)
+
 GitLab configuration:
 - Create instance with at least 8GB RAM (16GB is preferable)
 - Install GitLab: https://about.gitlab.com/install/
