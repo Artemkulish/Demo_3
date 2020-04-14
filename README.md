@@ -19,3 +19,4 @@ GitLab configuration:
 - Install Java: https://java.com/en/download/help/download_options.xml
 - Install Maven: https://maven.apache.org/install.html
 - Install Liquibase: https://www.liquibase.org/get_started/lb-setup-tutorial.html
+- Install Ansible: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
