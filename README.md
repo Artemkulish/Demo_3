@@ -9,6 +9,12 @@
 # Infrastructure
 ![1](https://user-images.githubusercontent.com/57228865/79222403-20c59000-7e60-11ea-838c-e148d5fbe1be.jpg)
 
+# Google Cloud Platform
+- Reserve two static IP addresses for GitLab and Load Balancer: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address
+- Create instance, router, and CloudNAT: https://github.com/Artemkulish/Ansible/blob/master/demo3/create_conteiner-opt.yml
+- Create Load Balancer: https://github.com/Artemkulish/Ansible/blob/master/demo3/loadbalancer.yml
+- Create CloudSQL: https://github.com/Artemkulish/Ansible/blob/master/demo3/cloudsql.yml
+
 GitLab configuration:
 - Create instance with at least 8GB RAM (16GB is preferable)
 - Install GitLab: https://about.gitlab.com/install/
