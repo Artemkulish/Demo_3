@@ -3,8 +3,8 @@
 # Components
 - Applications: identity, messaging, payment, simulation, trip, vehicle
 - Database update: the "database-update" folder with the change logs and property files
-- CI/CD: the .gitlab-ci.yml script for GitLab
-- Deploy: deploy.sh and docker-compose.yml.
+- CI/CD: the **.gitlab-ci.yml** script for GitLab
+- Deploy: **deploy.sh** and **docker-compose.yml**.
 
 # Infrastructure
 ![1](https://user-images.githubusercontent.com/57228865/79222403-20c59000-7e60-11ea-838c-e148d5fbe1be.jpg)
