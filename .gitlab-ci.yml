@@ -83,7 +83,7 @@ deploy:
 .database_template: &database_template
     stage: update
     script:
-        - cd trip
+        - cd database-update
         - mvn liquibase:$FUNCTION
     when: manual
     
