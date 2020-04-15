@@ -76,6 +76,8 @@ deploy:
       - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$INSTANCE_IP:/tmp
       - ssh $USERNAME@$INSTANCE_IP "sudo cp -r /tmp/env /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
       - ssh $USERNAME@$INSTANCE_IP "cd /var/ && sudo bash /var/deploy.sh"
+    after_script:
+      - docker image prune -a -f &>/dev/null
     only:
         changes:
             - identity/**/*
