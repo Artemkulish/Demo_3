@@ -71,7 +71,15 @@ deploy:
       - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$INSTANCE_IP:/tmp
       - ssh $USERNAME@$INSTANCE_IP "sudo cp -r /tmp/env /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
       - ssh $USERNAME@$INSTANCE_IP "cd /var/ && sudo bash /var/deploy.sh"
-      
+    only:
+        changes:
+            - identity/**/*
+            - vehicle/**/*
+            - trip/**/*
+            - simulation/**/*
+            - payment/**/*
+            - messaging/**/*
+            
 .database_template: &database_template
     stage: update
     script:
