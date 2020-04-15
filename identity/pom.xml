@@ -12,19 +12,5 @@
     <modules>
         <module>identity-starter</module>
         <module>identity-service</module>
-    </modules>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                <changeLogFile>../database-update/identity.xml</changeLogFile>    
-                <propertyFile>../database-update/liquibase.properties</propertyFile>
-                <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-                </configuration>
-	   </plugin>	       
-        </plugins>
-    </build>	         
+    </modules>       
 </project>
