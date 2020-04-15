@@ -91,14 +91,14 @@ database_update:
     <<: *database_template
     variables:
         FUNCTION: update
-    only:
-        changes:
-            - database-update/identity.xml  
+    #only:
+    #    changes:
+    #        - database-update/identity.xml  
     
 database_rollback:
     <<: *database_template
     variables:
         FUNCTION: rollback -Dliquibase.rollbackCount=1
-    only:
-        changes:
-            - database-update/identity.xml  
+    #only:
+    #    changes:
+    #        - database-update/identity.xml  
