@@ -7,7 +7,7 @@ key:
 
 spring:
   datasource:
-    url: ${DATASOURCE_URL}
+    url: ${DATABASE_URL}
     username: ${SQL_USERNAME}
     password: ${SQL_PASSWORD}
 
