@@ -4,7 +4,10 @@ stages:
     - deploy    
     - db_update
     - db-rollback
-
+    
+#=============================#
+# ---------- BUILD ---------- #
+#=============================#
 .build_template: &build_template
     stage: build
     before_script:
@@ -15,7 +18,6 @@ stages:
         - mvn clean package
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
         - sudo docker push gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP
-
 
 build_messaging:
     <<: *build_template
@@ -68,7 +70,9 @@ build_identity:
         changes:
             - identity/**/*
 
-
+#==============================#
+# ---------- DEPLOY ---------- #
+#==============================#
 deploy:
     stage: deploy
     before_script:
@@ -88,7 +92,9 @@ deploy:
             - payment/**/*
             - messaging/**/*
 
-
+#==================================================#
+# ---------- DATABASE UPDATE & ROLLBACK ---------- #
+#==================================================#
 .database_template: &database_template
     before_script:
         - DATABASE_IP=$(sed -n 1p /home/pass/env.txt)
