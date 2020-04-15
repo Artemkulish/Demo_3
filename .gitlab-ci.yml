@@ -61,11 +61,6 @@ build_identity:
         - cd ../identity-service && mvn clean package
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:identity .
         - sudo docker push gitlab.svagworks.me:5050/root/demo_3:identity
-    artifacts:
-        paths:
-        - identity/identity-starter$PATH_TO_JAR
-        - identity/identity-service$PATH_TO_JAR
-        expire_in: 1 day 
     only:
         changes:
             - identity/**/*
