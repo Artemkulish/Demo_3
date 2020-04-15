@@ -73,7 +73,7 @@ build_identity:
 .deploy_template: &deploy_template
     stage: deploy
     script:
-      - INSTANCE_IP=$(cat ~/instance_ip.txt)
+      - INSTANCE_IP=$(cat ~/instance_ip)
       - scp -r /home/env docker-compose.yml deploy.sh $USERNAME@$INSTANCE_IP:/tmp
       - ssh $USERNAME@$INSTANCE_IP "sudo cp -r /tmp/env /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
       - ssh $USERNAME@$INSTANCE_IP "cd /var/ && sudo bash /var/deploy.sh"
