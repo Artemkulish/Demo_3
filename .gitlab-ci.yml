@@ -4,7 +4,8 @@ stages:
     - deploy    
     - db_update
     - db-rollback
-    
+
+
 .build_template: &build_template
     stage: build
     script:
@@ -14,6 +15,7 @@ stages:
         - sudo mv Dockerfile_changed Dockerfile
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
         - sudo docker push gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP
+
 
 build_messaging:
     <<: *build_template
@@ -66,6 +68,7 @@ build_identity:
         changes:
             - identity/**/*
 
+
 deploy:
     stage: deploy
     script:
@@ -81,7 +84,8 @@ deploy:
             - simulation/**/*
             - payment/**/*
             - messaging/**/*
-            
+
+
 .database_template: &database_template
     script:
         - DATABASE_IP=$(sed -n 1p /home/pass/env.txt)
@@ -92,26 +96,29 @@ deploy:
         - cd $APP
         - mvn liquibase:$FUNCTION
     when: manual
-    
-db_update_trip:
+
+
+db_update_messaging:
     <<: *database_template
     stage: db_update
     variables:
-        APP: trip
+        APP: messaging
         FUNCTION: update
     only:
         changes:
-            - trip/**/*
-    
-db_rollback_trip:
+            - messaging/**/*
+            - database-update/messaging.xml
+
+db_rollback_messaging:
     <<: *database_template
     stage: db-rollback
     variables:
-        APP: trip
+        APP: messaging
         FUNCTION: rollback -Dliquibase.rollbackCount=1
     only:
         changes:
-            - trip/**/*
+            - messaging/**/*
+            - database-update/messaging.xml
 
 db_update_payment:
     <<: *database_template
@@ -134,3 +141,69 @@ db_rollback_payment:
         changes:
             - payment/**/*
             - database-update/payment.xml
+
+db_update_simulation:
+    <<: *database_template
+    stage: db_update
+    variables:
+        APP: simulation
+        FUNCTION: update
+    only:
+        changes:
+            - simulation/**/* 
+            - database-update/simulation.xml  
+    
+db_rollback_simulation:
+    <<: *database_template
+    stage: db-rollback
+    variables:
+        APP: simulation
+        FUNCTION: rollback -Dliquibase.rollbackCount=1
+    only:
+        changes:
+            - simulation/**/*
+            - database-update/simulation.xml
+
+db_update_trip:
+    <<: *database_template
+    stage: db_update
+    variables:
+        APP: trip
+        FUNCTION: update
+    only:
+        changes:
+            - trip/**/*
+            - database-update/trip.xml
+    
+db_rollback_trip:
+    <<: *database_template
+    stage: db-rollback
+    variables:
+        APP: trip
+        FUNCTION: rollback -Dliquibase.rollbackCount=1
+    only:
+        changes:
+            - trip/**/*
+            - database-update/trip.xml
+
+db_update_vehicle:
+    <<: *database_template
+    stage: db_update
+    variables:
+        APP: vehicle
+        FUNCTION: update
+    only:
+        changes:
+            - vehicle/**/*
+            - database-update/vehicle.xml
+    
+db_rollback_vehicle:
+    <<: *database_template
+    stage: db-rollback
+    variables:
+        APP: vehicle
+        FUNCTION: rollback -Dliquibase.rollbackCount=1
+    only:
+        changes:
+            - vehicle/**/*
+            - database-update/vehicle.xml
