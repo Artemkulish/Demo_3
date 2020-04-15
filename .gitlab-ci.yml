@@ -1,12 +1,10 @@
-variables:
-    PATH_TO_JAR:    /target/*.jar
-    
 stages:
     - build
     - deploy    
     - update
     
-    
+variables:
+    PATH_TO_JAR:    /target/*.jar    
 
 .build_template: &build_template
     stage: build
@@ -15,10 +13,6 @@ stages:
         - mvn clean package
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
         - sudo docker push gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP
-    artifacts:
-        paths:
-        - $PATH_TO_APP$PATH_TO_JAR
-        expire_in: 15 min
 
 build_messaging:
     <<: *build_template
