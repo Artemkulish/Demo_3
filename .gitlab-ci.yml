@@ -120,8 +120,7 @@ db_update_payment:
         FUNCTION: update
     only:
         changes:
-            - trip/**/*
-            - database-update/payment.xml
+            - trip/**/* & database-update/payment.xml  
     
 db_rollback_payment:
     <<: *database_template
