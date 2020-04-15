@@ -1,4 +1,4 @@
- changeLogFile: identity.xml
+ changeLogFile: -app_name-.xml
  url: jdbc:postgresql://-hidden_ip-:5432/-app_name-
  username: -hidden_un-
  password: -hidden_pass-
