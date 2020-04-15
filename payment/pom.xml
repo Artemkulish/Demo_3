@@ -96,4 +96,5 @@
         </plugins>
         <finalName>kick-scooter-payment</finalName>
     </build>
+	
 </project>
