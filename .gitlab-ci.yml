@@ -89,7 +89,7 @@ deploy:
         - echo $DATABASE_IP
         - cat database-update/liquibase.properties | sed -e "s/-hidden_ip-/$DATABASE_IP/; \
                                                      s/-app_name-/$APP/;                  \
-                                                     s/-hidden_un-/$DATABASE_USERNAME/" \
+                                                     s/-hidden_un-/$DATABASE_USERNAME/    \
                                                      s/-hidden_pass-/$DATABASE_PASSWORD/" \
                                                      > ./Dockerfile_changed
         - cat database-update/liquibase.properties
