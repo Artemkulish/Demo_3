@@ -11,6 +11,8 @@ variables:
     script:
         - cd $PATH_TO_APP
         - mvn clean package
+        - cat Dockerfile | sed -e "s/-hidden_access_id-/$SUMOLOGIC_ACCESS_ID/; s/-hidden_access_key-/$SUMOLOGIC_ACCESS_KEY/" > ./Dockerfile_changed
+        - sudo mv Dockerfile_changed Dockerfile
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
         - sudo docker push gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP
 
