@@ -8,20 +8,23 @@ docker run --rm \
     docker/compose:1.24.0 $1 $2 $3 $4
 }
 
+# Array of services defined in docker-compose
 services=("zookeeper" "kafka" "identity" "vehicle" "trip" "payment" "messaging" "simulation")
 
 for container in ${services[*]}
 do 
-docker pull gitlab.svagworks.me:5050/root/demo_3:$container &>/dev/null
-if docker images | awk '{print $2}' | awk 'NR==2' | grep $container &>/dev/null; then
-echo "Updating $container"
-docker-compose up --no-deps -d $container &>/dev/null &
-elif docker ps | grep -q $container; then
-echo "Running $container";
-else
-echo "Starting $container"
-docker-compose up --no-deps -d $container &>/dev/null &
-fi
+    # Downloading new image
+    docker pull gitlab.svagworks.me:5050/root/demo_3:$container &>/dev/null
+        if docker images | awk '{print $2}' | awk 'NR==2' | grep $container &>/dev/null; then
+            echo "Updating $container"
+            docker-compose up --no-deps -d $container &>/dev/null &
+        elif 
+            docker ps | grep -q $container; then
+            echo "Running $container";
+        else
+            echo "Starting $container"
+            docker-compose up --no-deps -d $container &>/dev/null &
+        fi
 done
 
 echo ""
