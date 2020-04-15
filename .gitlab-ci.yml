@@ -4,7 +4,7 @@ stages:
     - update
     
 variables:
-    PATH_TO_JAR:    /target/*.jar    
+    PATH_TO_JAR: /target/*.jar    
 
 .build_template: &build_template
     stage: build
