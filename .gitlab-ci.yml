@@ -93,7 +93,7 @@ database_update:
         FUNCTION: update
     only:
         changes:
-            - dbchangelog.xml  
+            - database-update/identity.xml  
     
 database_rollback:
     <<: *database_template
@@ -101,4 +101,4 @@ database_rollback:
         FUNCTION: rollback -Dliquibase.rollbackCount=1
     only:
         changes:
-            - dbchangelog.xml  
+            - database-update/identity.xml  
