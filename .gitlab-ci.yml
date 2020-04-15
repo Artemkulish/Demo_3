@@ -64,7 +64,7 @@ build_identity:
         changes:
             - identity/**/*
 
-.deploy_template: &deploy_template
+deploy:
     stage: deploy
     script:
       - INSTANCE_IP=$(cat ~/instance_ip)
@@ -72,43 +72,6 @@ build_identity:
       - ssh $USERNAME@$INSTANCE_IP "sudo cp -r /tmp/env /var/ && sudo mv /tmp/docker-compose.yml /var/ && sudo mv /tmp/deploy.sh /var/"
       - ssh $USERNAME@$INSTANCE_IP "cd /var/ && sudo bash /var/deploy.sh"
       
-deploy_identity:
-    <<: *deploy_template
-    only:
-        changes:
-            - identity/**/*
-
-deploy_messaging:
-    <<: *deploy_template
-    only:
-        changes:
-            - messaging/**/*
-        
-deploy_payment:
-    <<: *deploy_template
-    only:
-        changes:
-            - payment/**/*
-        
-deploy_simulation:
-    <<: *deploy_template
-    only:
-        changes:
-            - simulation/**/*
-        
-deploy_trip:
-    <<: *deploy_template
-    only:
-        changes:
-            - trip/**/*
-        
-deploy_vehicle:
-    <<: *deploy_template
-    only:
-        changes:
-            - vehicle/**/*
-
-
 .database_template: &database_template
     stage: update
     script:
