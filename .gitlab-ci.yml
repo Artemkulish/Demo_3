@@ -87,7 +87,7 @@ deploy:
         - DATABASE_PASSWORD=$(sed -n 2p /home/pass/env.txt)
         - DATABASE_USERNAME=$(sed -n 3p /home/pass/env.txt)
         - echo $DATABASE_IP
-        - cat database-update/liquibase.template | sed -e "s/-hidden_ip-/$DATABASE_IP/; s/-app_name-/$APP/; s/-hidden_un-/$DATABASE_USERNAME/; s/-hidden_pass-/$DATABASE_PASSWORD/" > .database-update/liquibase.properties
+        - cat database-update/liquibase.template | sed -e "s/-hidden_ip-/$DATABASE_IP/; s/-app_name-/$APP/; s/-hidden_un-/$DATABASE_USERNAME/; s/-hidden_pass-/$DATABASE_PASSWORD/" > ./database-update/liquibase.properties
         - cd $APP
         - mvn liquibase:$FUNCTION
     when: manual
@@ -111,3 +111,25 @@ db_rollback_trip:
     only:
         changes:
             - trip/**/*
+
+db_update_payment:
+    <<: *database_template
+    stage: db_update
+    variables:
+        APP: payment
+        FUNCTION: update
+    only:
+        changes:
+            - trip/**/*
+            - database-update/payment.xml
+    
+db_rollback_payment:
+    <<: *database_template
+    stage: db-rollback
+    variables:
+        APP: payment
+        FUNCTION: rollback -Dliquibase.rollbackCount=1
+    only:
+        changes:
+            - trip/**/*
+            - database-update/payment.xml
