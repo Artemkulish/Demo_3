@@ -1,3 +1,4 @@
+---
 stages:
     - build
     - deploy    
@@ -120,7 +121,8 @@ db_update_payment:
         FUNCTION: update
     only:
         changes:
-            - trip/**/* & database-update/payment.xml  
+            - payment/**/* 
+            - database-update/payment.xml  
     
 db_rollback_payment:
     <<: *database_template
@@ -130,5 +132,5 @@ db_rollback_payment:
         FUNCTION: rollback -Dliquibase.rollbackCount=1
     only:
         changes:
-            - trip/**/*
+            - payment/**/*
             - database-update/payment.xml
