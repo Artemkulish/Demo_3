@@ -89,12 +89,13 @@ deploy:
 
 
 .database_template: &database_template
-    script:
+    before_script:
         - DATABASE_IP=$(sed -n 1p /home/pass/env.txt)
         - DATABASE_PASSWORD=$(sed -n 2p /home/pass/env.txt)
         - DATABASE_USERNAME=$(sed -n 3p /home/pass/env.txt)
         - echo $DATABASE_IP
         - cat database-update/liquibase.template | sed -e "s/-hidden_ip-/$DATABASE_IP/; s/-app_name-/$APP/; s/-hidden_un-/$DATABASE_USERNAME/; s/-hidden_pass-/$DATABASE_PASSWORD/" > ./database-update/liquibase.properties
+    script:    
         - cd $APP
         - mvn liquibase:$FUNCTION
     when: manual
