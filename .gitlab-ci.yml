@@ -83,21 +83,34 @@ deploy:
 .database_template: &database_template
     stage: update
     script:
-        - cd trip
-        - mvn liquibase:$FUNCTION
+        - DATABASE_IP=$(sed -n 1p /home/pass/env.txt)
+        - DATABASE_PASSWORD=$(sed -n 2p /home/pass/env.txt)
+        - DATABASE_USERNAME=$(sed -n 3p /home/pass/env.txt)
+        - echo $DATABASE_IP
+        - cat database-update/liquibase.properties | sed -e "s/-hidden_ip-/$DATABASE_IP/; \
+                                                     s/-app_name-/$APP/;                  \
+                                                     s/-hidden_un-/$DATABASE_USERNAME/" \
+                                                     s/-hidden_pass-/$DATABASE_PASSWORD/" \
+                                                     > ./Dockerfile_changed
+        - cat database-update/liquibase.properties
+        #- cd $APP
+        #- sudo mv Dockerfile_changed Dockerfile
+        #- mvn liquibase:$FUNCTION
     when: manual
     
-database_update:
+db_update_trip:
     <<: *database_template
     variables:
+        APP: trip
         FUNCTION: update
     #only:
     #    changes:
     #        - database-update/identity.xml  
     
-database_rollback:
+db_rollback_trip:
     <<: *database_template
     variables:
+        APP: trip
         FUNCTION: rollback -Dliquibase.rollbackCount=1
     #only:
     #    changes:
