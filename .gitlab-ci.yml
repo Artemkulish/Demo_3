@@ -1,7 +1,8 @@
 stages:
     - build
     - deploy    
-    - update
+    - db_update
+    - db-rollback
     
 .build_template: &build_template
     stage: build
@@ -81,33 +82,32 @@ deploy:
             - messaging/**/*
             
 .database_template: &database_template
-    stage: update
     script:
         - DATABASE_IP=$(sed -n 1p /home/pass/env.txt)
         - DATABASE_PASSWORD=$(sed -n 2p /home/pass/env.txt)
         - DATABASE_USERNAME=$(sed -n 3p /home/pass/env.txt)
         - echo $DATABASE_IP
-        - cat database-update/liquibase.template | sed -e "s/-hidden_ip-/$DATABASE_IP/; s/-app_name-/$APP/; s/-hidden_un-/$DATABASE_USERNAME/; s/-hidden_pass-/$DATABASE_PASSWORD/" > ./liquibase.properties
-        - cat ./liquibase.properties
-        #- cd $APP
-        #- sudo mv Dockerfile_changed Dockerfile
-        #- mvn liquibase:$FUNCTION
+        - cat database-update/liquibase.template | sed -e "s/-hidden_ip-/$DATABASE_IP/; s/-app_name-/$APP/; s/-hidden_un-/$DATABASE_USERNAME/; s/-hidden_pass-/$DATABASE_PASSWORD/" > .database-update/liquibase.properties
+        - cd $APP
+        - mvn liquibase:$FUNCTION
     when: manual
     
 db_update_trip:
     <<: *database_template
+    stage: db_update
     variables:
         APP: trip
         FUNCTION: update
-    #only:
-    #    changes:
-    #        - database-update/identity.xml  
+    only:
+        changes:
+            - trip/**/*
     
 db_rollback_trip:
     <<: *database_template
+    stage: db-rollback
     variables:
         APP: trip
         FUNCTION: rollback -Dliquibase.rollbackCount=1
-    #only:
-    #    changes:
-    #        - database-update/identity.xml  
+    only:
+        changes:
+            - trip/**/*
