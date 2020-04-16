@@ -1,10 +1,10 @@
 # Deploy of multi-service Java application
 
 # Project description
-Implement automatic creation of docker environment for the multi-service Java application that includes:
+Implement automatic creation of environment for the multi-service Java application that includes:
 - Load Balancer;
 - Hosting server;
-- Separate containers for each service;
+- Separate docker containers for each service;
 - External monitoring;
 - Internal monitoring;
 - Cloud SQL database;
