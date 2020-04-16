@@ -29,7 +29,8 @@ Implement automatic creation of docker environment for the multi-service Java ap
 - Alerting in case of emergency;
 - Logs aggregation to be able to create statistics via various metrics;
 - The least possible downtime during the updates;
-- Ability to build and deploy the services separately depending on the needs.
+- Ability to build and deploy the services separately depending on the needs;
+- Implement the possibility of database update;
 
 # Google Cloud Platform
 - Reserve two static IP addresses for GitLab and Load Balancer: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address
