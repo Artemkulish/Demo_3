@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# In order to be able to use docker-compose in Google Container-Optimized OS 
+# Way to use docker-compose in Google Container-Optimized OS 
 function docker-compose (){
 docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -32,10 +32,9 @@ do
         fi
 done
 
-echo ""
 echo "Checking active containers, please hold on..."
 sleep 15
 docker-compose ps
-echo ""
+
 echo "Deleting unused images" 
 docker image prune -a -f | grep Total
