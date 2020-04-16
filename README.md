@@ -1,5 +1,15 @@
 # Deploy of multi-service Java application
 
+# Project description
+Implement automatic creation of environment for the multi-service Java application including:
+- Load Balancer;
+- Hosting server;
+- Separate containers for each service;
+- External monitoring;
+- Internal monitoring;
+- Cloud SQL database;
+- CI/CD server.
+
 # Components
 - Applications: **identity**, **messaging**, **payment**, **simulation**, **trip**, **vehicle**;
 - DB update: **change logs** and the **property file**;
