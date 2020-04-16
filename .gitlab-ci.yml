@@ -13,7 +13,8 @@ stages:
     before_script:
         - cd $PATH_TO_APP
         - cat Dockerfile | sed -e "s/-hidden_access_id-/$SUMOLOGIC_ACCESS_ID/; s/-hidden_access_key-/$SUMOLOGIC_ACCESS_KEY/" > ./Dockerfile_changed
-        - sudo mv Dockerfile_changed Dockerfile        
+        - sudo mv Dockerfile_changed Dockerfile
+        - cat Dockerfile
     script:
         - mvn clean package
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
