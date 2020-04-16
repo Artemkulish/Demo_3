@@ -6,6 +6,10 @@
 - CI/CD: the **.gitlab-ci.yml** script for GitLab;
 - Deploy: **deploy.sh** and **docker-compose.yml**.
 
+# References
+- Java application: https://github.com/KickScooterTeam
+- Ansible repository: https://github.com/Artemkulish/Ansible
+
 # Infrastructure
 ![1](https://user-images.githubusercontent.com/57228865/79222403-20c59000-7e60-11ea-838c-e148d5fbe1be.jpg)
 
