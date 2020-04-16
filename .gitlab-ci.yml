@@ -2,8 +2,8 @@
 stages:
     - build
     - deploy    
-    - db_update
-    - db-rollback
+    - DB_update
+    - DB_rollback
     
 #=======================================#
 # --------------- BUILD --------------- #
@@ -14,7 +14,6 @@ stages:
         - cd $PATH_TO_APP
         - cat Dockerfile | sed -e "s/-hidden_access_id-/$SUMOLOGIC_ACCESS_ID/; s/-hidden_access_key-/$SUMOLOGIC_ACCESS_KEY/" > ./Dockerfile_changed
         - sudo mv ./Dockerfile_changed ./Dockerfile
-        - cat Dockerfile
     script:
         - mvn clean package
         - sudo docker build -t gitlab.svagworks.me:5050/root/demo_3:$PATH_TO_APP .
@@ -110,7 +109,7 @@ deploy:
 
 db_update_messaging:
     <<: *database_template
-    stage: db_update
+    stage: DB_update
     variables:
         APP: messaging
         FUNCTION: update
@@ -121,7 +120,7 @@ db_update_messaging:
 
 db_rollback_messaging:
     <<: *database_template
-    stage: db-rollback
+    stage: DB_rollback
     variables:
         APP: messaging
         FUNCTION: rollback -Dliquibase.rollbackCount=1
@@ -132,7 +131,7 @@ db_rollback_messaging:
 
 db_update_payment:
     <<: *database_template
-    stage: db_update
+    stage: DB_update
     variables:
         APP: payment
         FUNCTION: update
@@ -143,7 +142,7 @@ db_update_payment:
     
 db_rollback_payment:
     <<: *database_template
-    stage: db-rollback
+    stage: DB_rollback
     variables:
         APP: payment
         FUNCTION: rollback -Dliquibase.rollbackCount=1
@@ -154,7 +153,7 @@ db_rollback_payment:
 
 db_update_simulation:
     <<: *database_template
-    stage: db_update
+    stage: DB_update
     variables:
         APP: simulation
         FUNCTION: update
@@ -165,7 +164,7 @@ db_update_simulation:
     
 db_rollback_simulation:
     <<: *database_template
-    stage: db-rollback
+    stage: DB_rollback
     variables:
         APP: simulation
         FUNCTION: rollback -Dliquibase.rollbackCount=1
@@ -176,7 +175,7 @@ db_rollback_simulation:
 
 db_update_trip:
     <<: *database_template
-    stage: db_update
+    stage: DB_update
     variables:
         APP: trip
         FUNCTION: update
@@ -187,7 +186,7 @@ db_update_trip:
     
 db_rollback_trip:
     <<: *database_template
-    stage: db-rollback
+    stage: DB_rollback
     variables:
         APP: trip
         FUNCTION: rollback -Dliquibase.rollbackCount=1
@@ -198,7 +197,7 @@ db_rollback_trip:
 
 db_update_vehicle:
     <<: *database_template
-    stage: db_update
+    stage: DB_update
     variables:
         APP: vehicle
         FUNCTION: update
@@ -209,7 +208,7 @@ db_update_vehicle:
     
 db_rollback_vehicle:
     <<: *database_template
-    stage: db-rollback
+    stage: DB_rollback
     variables:
         APP: vehicle
         FUNCTION: rollback -Dliquibase.rollbackCount=1
