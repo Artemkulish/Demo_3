@@ -92,7 +92,7 @@
                			<artifactId>liquibase-maven-plugin</artifactId>
                 		<version>3.8.0</version>
                 		<configuration>
-                		<changeLogFile>../database-update/messaging.xml</changeLogFile>    
+                		<changeLogFile>../database-update/vehicle.xml</changeLogFile>    
                 		<propertyFile>../database-update/liquibase.properties</propertyFile>
                 		<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                 		</configuration>
